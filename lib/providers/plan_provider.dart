@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../models/data_layer.dart';
 
 class PlanProvider extends InheritedNotifier<ValueNotifier<List<Plan>>> {
@@ -9,8 +10,11 @@ class PlanProvider extends InheritedNotifier<ValueNotifier<List<Plan>>> {
   }) : super(child: child, notifier: notifier);
 
   static ValueNotifier<List<Plan>> of(BuildContext context) {
-    return context
-        .dependOnInheritedWidgetOfExactType<PlanProvider>()!
-        .notifier!;
+    final provider = context.dependOnInheritedWidgetOfExactType<PlanProvider>();
+    // Mencegah error null dengan mengembalikan notifier kosong jika null
+    if (provider == null || provider.notifier == null) {
+      return ValueNotifier<List<Plan>>([]);
+    }
+    return provider.notifier!;
   }
 }

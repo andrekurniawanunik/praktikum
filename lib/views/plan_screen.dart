@@ -38,12 +38,10 @@ class PlanScreenState extends State<PlanScreen> {
       body: ValueListenableBuilder<List<Plan>>(
         valueListenable: plansNotifier,
         builder: (context, plans, child) {
-          Plan currentPlan;
-          try {
-            currentPlan = plans.firstWhere((p) => p.name == plan.name);
-          } catch (e) {
-            currentPlan = plan;
-          }
+          Plan currentPlan = plans.firstWhere(
+            (p) => p.name == plan.name,
+            orElse: () => plan,
+          );
 
           return Column(
             children: [

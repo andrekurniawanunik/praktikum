@@ -20,21 +20,21 @@ class _PlanCreatorScreenState extends State<PlanCreatorScreen> {
   }
 
   @override
-Widget build(BuildContext context) {
-  return Scaffold(
-    appBar: AppBar(
-      title: const Text('Master Plans Andre'),
-      backgroundColor: Colors.blue,
-      foregroundColor: Colors.white,
-    ),
-    body: Column(
-      children: [
-        _buildListCreator(),
-        Expanded(child: _buildMasterPlans()),
-      ],
-    ),
-  );
-}
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Master Plans Andre'),
+        backgroundColor: Colors.blue,
+        foregroundColor: Colors.white,
+      ),
+      body: Column(
+        children: [
+          _buildListCreator(),
+          Expanded(child: _buildMasterPlans()),
+        ],
+      ),
+    );
+  }
 
   Widget _buildListCreator() {
     return Padding(
@@ -45,7 +45,9 @@ Widget build(BuildContext context) {
         child: TextField(
           controller: textController,
           decoration: const InputDecoration(
-              labelText: 'Add a plan', contentPadding: EdgeInsets.all(20)),
+            labelText: 'Add a plan',
+            contentPadding: EdgeInsets.all(20),
+          ),
           onEditingComplete: _addPlan,
         ),
       ),
@@ -74,8 +76,10 @@ Widget build(BuildContext context) {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           const Icon(Icons.note, size: 100, color: Colors.grey),
-          Text('Anda belum memiliki rencana apapun.',
-              style: Theme.of(context).textTheme.headlineSmall),
+          Text(
+            'Anda belum memiliki rencana apapun.',
+            style: Theme.of(context).textTheme.headlineSmall,
+          ),
         ],
       );
     }
